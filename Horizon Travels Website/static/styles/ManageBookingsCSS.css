@@ -1,0 +1,475 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+.verticalSeparatorLine {
+    border-left: 1px solid rgb(177, 177, 177);
+    height: 100%;
+    margin: 5px 20px 5px 20px;
+}
+
+.verticalDashedLine {
+    position: absolute;
+    border-left: 3px dotted black;
+    height: 100%;
+    top: 0px;
+    right: 163px;
+}
+
+.horizontalSeparatorLine {
+    display: none;
+    border-bottom: 2px solid rgb(177, 177, 177);
+    width: 90%;
+    margin: 20px auto 20px auto;
+}
+
+#ticketsSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 20px;
+    width: calc(100% - 350px); overflow-y: auto; height: calc(100vh - 100px);
+}
+
+.sideBar {
+    width: 295px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+#backbutton {
+    margin-top: 15px;
+    height: 60px;
+    width: 80px;
+    font-size: 35px;
+    border: none;
+    background-color: #eaeaea;
+    transition: color 0.3s ease;
+}
+
+#backbutton:hover {
+    background-color: #dcdcdc;
+    font-size: 40px;
+}
+
+#JTHManage {
+    inset: auto;
+    margin: auto 0px auto 0px;
+    position: relative;
+    width: 100%;
+}
+
+.journeyType {
+    width: 100%;
+    background-color: #5298ef;
+    color: white;
+    padding: 18px;
+    border: 1px solid #333;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.activeJourneyType {
+    background-color: white;
+    color: black;
+    border: 5px solid #5298ef;
+    padding: 14px;
+}
+
+.journeyType:hover {
+    background-color: white;
+    color: black;
+    border: 5px solid #4580c9;
+    padding: 14px;
+    cursor: pointer;
+}
+
+#journeys {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.journeyholder {
+    position: relative;
+    width: 571px;
+    height: fit-content;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #333;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.journeyholder p {
+    margin: 0px;
+    margin-top: 5px;
+    font-size: medium;
+    text-align: center;
+    background-color: white;
+}
+
+.hideDeparted {
+    display: none;
+}
+
+.origindestholder {
+    width: fit-content;
+    height: 120px;
+}
+
+.cityHeading {
+    float: left;
+    margin: 15px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-size: 30px;
+}
+
+.cityHeading h2 {
+    margin: 0px;
+    font-size: inherit;
+}
+
+#originHolder p {
+    float: left;
+    border-right: solid 4px white;
+}
+
+#destinationHolder p {
+    float: right;
+    border-left: solid 4px white;
+}
+
+#dashedline {
+    border-bottom: 2px dashed;
+    position: relative;
+    top: 63px;
+    left: 38px;
+    width: calc(100% - 50px);
+}
+
+#departed {
+    color: red;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 95px;
+    text-align: left;
+    width: fit-content;
+}
+
+#bookingRef {
+    font-weight: bold;
+}
+
+#infoText {
+    margin: 1px;
+    text-align: left;
+    width: fit-content;
+}
+
+#bookingprice {
+    position: relative;
+    width: fit-content;
+    float: right;
+    right: 40px;
+    bottom: 45px;
+}
+
+#bookingprice h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.seatsholder {
+    width: 100%;
+    margin: 15px;
+    margin-top: 20px;
+    font-size: 17px;
+    height: 55px;
+}
+
+#seatsleft {
+    font-size: 12px;
+    position: relative;
+    top: -6px;
+    left: 24px;
+}
+
+.bookticket {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+
+    background-color: #5298ef;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 10px 0px 5px 0px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bookticket.delete {
+    background-color: rgb(246, 0, 0);
+}
+
+.bookticket.delete:hover {
+    background-color: rgb(226, 0, 0);
+}
+
+.bookticket:hover {
+    background-color: #4580c9;
+    cursor: pointer;
+}
+
+#travelmethodicon {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 40px;
+}
+
+.nojourneys {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: medium;
+    color: #6f6f6f;
+    font-weight: bold;
+}
+
+#cancelinfo {
+    margin: 0px;
+    text-align: left;
+}
+
+.suggestionbutton {
+    display: block;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background-color: rgb(242, 242, 242);
+    cursor: pointer;
+    font-size: 14px;
+    width: calc(100% - 10px);
+    text-align: left;
+}
+
+.suggestionbutton:hover {
+    background-color: #eaeaea;
+}
+
+.searchbar {
+    background-color: #f2fbff;
+    padding: 13px;
+    font-size: 16px;
+    border: 3px solid #5298ef;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+}
+
+.searchbar:focus {
+    border-color: #4580c9;
+    outline: none;
+}
+
+#usersdetails label {
+    margin-top: 5px;
+}
+
+.valueedited {
+    border: 2px solid orange;
+    background-color: #ffefdb;
+}
+
+.valuesaved {
+    border: 2px solid green;
+    background-color: #dbffde;
+}
+
+.valuefailed {
+    border: 2px solid red;
+    background-color: #ffdbdb;
+}
+
+.bluebutton {
+    background-color: #5298ef;
+    border-radius: 5px;
+    color: white;
+    padding: 8px;
+}
+
+.bluebutton.red {
+    background-color: red;
+}
+
+.bluebutton.red:hover {
+    background-color: #c94545;
+}
+
+.bluebutton:hover {
+    cursor: pointer;
+    background-color: #4580c9;
+}
+
+table {
+    border-collapse: collapse;
+    width: fit-content;
+    height: fit-content;
+    margin: 15px;
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+#removebtnbtn {
+    background-color: transparent;
+    border: none;
+}
+
+#removebtnbtn:hover {
+    cursor: pointer;
+    font-size: large;
+}
+
+.scrollHeader {
+    background-color: white;
+    padding-bottom: 10px;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tableheader th {
+    background-color: gainsboro;
+}
+
+.formsectioninput {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5px 0px 5px;
+}
+
+.companyDataHolder {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    width: fit-content;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.companyDataHolder h3 {
+    margin: 0px;
+    margin-bottom: 8px;
+    text-decoration: underline;
+    position: absolute;
+}
+
+.CDData,
+.CDLables {
+    margin-top: 25px;
+}
+
+.CDLables p {
+    text-align: right;
+    margin: 6px 5px 6px 0;
+}
+
+.CDData p {
+    text-align: left;
+    font-weight: bold;
+    margin: 6px 0 6px 0;
+}
+
+.bookingContainer {
+    border: #333 solid 1px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.bookingContainer h2,
+.bookingContainer p,
+.bookingContainer h3 {
+    margin: 0;
+}
+
+.seat-bar {
+    display: flex;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.seat-green {
+    background-color: lightgreen;
+}
+
+.seat-blue {
+    background-color: rgb(69, 69, 255);
+}
+
+.seat-grey {
+    background-color: gainsboro;
+}
+
+.dateLine {
+    border: 3px solid rgb(44, 44, 44);
+    border-bottom: 0px;
+    flex-grow: 1;
+    height: 0px;
+    margin: auto;
+    margin-left: 10px;
+}
+
+#AdminPPG {
+    margin-top: 100px;
+    display: flex;
+    height: 580px;
+    font-family: Arial, sans-serif;
+}
+
+#addjourneystickyholder {
+    position: sticky; top: -25px; display: flex; flex-direction: column; background-color: white;
+}
+
+#showjourneysbtn {
+    margin: 10px auto 20px auto; position: sticky; top: 203px; width: fit-content;
+}
+
+#MBPage {
+    margin-top: 100px; display: flex; height: 580px; font-family: Arial, sans-serif;
+}
+
+#cancelHolder {
+    display: flex; flex-direction: column; margin-right: 30px;
+}

@@ -1,0 +1,170 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+.signInContent {
+    margin: auto;
+    margin-top: 50px;
+    width: 70%;
+    max-width: 400px;
+
+    backdrop-filter: blur(80px) brightness(1.2);
+
+    border-radius: 15px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-top: 30px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#register {
+    top: 55px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.backgroundImage {
+    position: fixed;
+    background-image: url('Images/MainBackground.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: cover;
+    height: 800px;
+    width: 100%;
+    top: 0px;
+    z-index: -1;
+}
+
+#userdetails {
+    width: 90%;
+}
+
+#userdetails div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: relative;
+}
+
+form div label,
+form div input,
+form div button,
+form div span {
+    display: block;
+    width: 100%;
+}
+
+form div label {
+    margin-left: 5px;
+}
+
+form div input {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+form div button {
+    padding: 10px;
+}
+
+.lableRight {
+    position: absolute;
+    right: 5px;
+    width: fit-content;
+}
+
+.inline {
+    display: inline-block;
+    width: fit-content;
+    margin: 0px;
+    vertical-align: middle;
+    /* Aligns the checkbox with the middle of the text */
+}
+
+form div input {
+    background-color: #f2fbff;
+    padding: 13px;
+    font-size: 16px;
+    border: 3px solid #5298ef;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+form div input:focus {
+    border-color: #4580c9;
+    outline: none;
+}
+
+form div button {
+    background-color: #5298ef;
+    color: white;
+    padding: 13px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    margin: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+form div button:hover {
+    background-color: #4580c9;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin-bottom: 5px;
+    accent-color: #4b92e8;
+}
+
+#emailerrormsg,
+#pwderrormsg,
+#fnameerrormsg,
+#pwdmatcherrormsg {
+    margin-top: -18px;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    color: red;
+    position: absolute;
+    top: 100%;
+    display: none;
+}
+
+#accounterror {
+    position: absolute;
+    top: 220px;
+    color: red;
+}
+
+#backbutton {
+    position: fixed;
+    left: 30px;
+    top: 95px;
+    height: 51px;
+    width: 68px;
+    font-size: 30px;
+    z-index: 2;
+    border: none;
+    border-radius: 5px;
+    backdrop-filter: blur(40px) brightness(1.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+#backbutton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 28px;
+}

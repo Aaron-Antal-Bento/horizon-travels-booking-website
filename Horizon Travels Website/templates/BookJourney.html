@@ -1,0 +1,337 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Confirm Booking Horizon Travels</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ConfirmBookingCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/journeysRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ConfirmBookingRWD.css')}}" />
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav" style="z-index: 4;">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content" style="margin-left: -152px;">
+                <a class="navLinks" href="{{ url_for('managebookings') }}">Manage Bookings</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a id="signIn" href="{{ url_for('signin') }}" aria-label="Sign in to your account">Sign In</a>
+        <a id="manageaccount" href="{{ url_for('account') }}" aria-label="Manage your account"
+            style="display: none;"><span id="usersname"></span></a>
+        <a class="navLinks" href="{{ url_for('managebookings') }}" aria-label="Manage your bookings" style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93.5%);
+  ">Manage Bookings</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 92%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 91.5%, 0% 88%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="pageContents column">
+        <button id="backbutton" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></button>
+        <h1 style="margin-left: 10px;">Confirm Booking</h1>
+        <div class="horizontalSeparatorLine"></div>
+
+        <div id="contentHolder" class="row">
+            <div class="section column fill" style="height: fit-content;">
+                {% if dataerror %}
+                <p class="errormsg" style="display: inline;">An error occurred while submitting your information, please
+                    try again.</p>
+                {% endif %}
+
+                {% if cards %}
+                <h2 style="margin: 10px 0px 0px 10px;">Select Card</h2>
+                <form class="column" id="cardSelect" action="{{ url_for('finalisebooking') }}"
+                    style="max-width: 300px; margin: 10px; padding: 0px;" method="post">
+                    <input type="hidden" name="carddetailsmethod" value="cardid">
+                    {% for card in cards %}
+                    {% if card[2] %}
+                    <div class="outline" style="position: relative; border-bottom: 0px;">
+                        <label for="card" style="display: inline; border-bottom: 0px;"> Card
+                            ending in: •••• {{card[1]}} <span style="color: red;">(Expired)</span></label>
+                        <i class="fa-solid fa-credit-card iconright"></i>
+                    </div>
+                    {% else %}
+                    <div class="outline mousePointer" style="position: relative; border-bottom: 0px;"
+                        onclick="this.querySelector('#card{{card[0]}}').click()">
+                        <label for="card" class="mousePointer" style="display: inline; border-bottom: 0px;"><input type="radio" name="card"
+                                id="card{{card[0]}}" class="mousePointer" value="{{card[0]}}"> Card
+                            ending in: •••• {{card[1]}}</label>
+                        <i class="fa-solid fa-credit-card iconright"></i>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="outline mousePointer" style="position: relative;" onclick="this.querySelector('#addcard').click()">
+                        <label for="card" class="mousePointer" style="display: inline;"><input type="radio" name="card" id="addcard"
+                                value="newcard" class="mousePointer" checked> Add new card</label>
+                        <i class="fa-solid fa-plus iconright" style="margin-right: 3px;"></i>
+                    </div>
+                </form>
+
+                <form class="section column" id="addNewCard" action="{{ url_for('finalisebooking') }}" method="post">
+                    {% else %} <h2 style="margin: 10px 0px 0px 10px;">Enter Card Details</h2>
+                    <form class="column" id="addNewCard" action="{{ url_for('finalisebooking') }}" method="post"
+                        style="margin: 10px auto 0px 0px;">
+                        {% endif %}
+                        <input type="hidden" name="carddetailsmethod" value="newcard">
+                        <p class="errormsg" id="carderrormsg">Input error.</p>
+
+                        <label for="name" class="nomargin">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Full name" required>
+
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456"
+                            maxlength="19" required>
+
+                        <div class="row invisiblesection">
+                            <div class="invisiblesection">
+                                <label for="exp-date">Expiry Date</label>
+                                <input type="text" id="exp-date" name="exp-date" placeholder="00/00" maxlength="5"
+                                    required>
+                            </div>
+                            <div class="invisiblesection">
+                                <label for="cvv">CVV</label>
+                                <input type="password" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 15px;">
+                            <label for="remembercard" style="display: inline;"><input class="minimise" type="checkbox"
+                                    name="remembercard" checked> Remember card?</label>
+                        </div>
+                    </form>
+            </div>
+
+            <div class="section column" style="position: relative; height: fit-content; min-width: 270px;">
+                <h2 class="Heading">Summary</h2>
+                <div style="margin-top: 15px;">
+                    <div class="row">
+                        <h2 class="nomargin" style="margin-right: 15px;">From:</h2>
+                        <h2 class="fill nomargin" style="text-align: right;">{{ journey.Origin }}</h2>
+                    </div>
+                    <div class="row">
+                        <h2 class="nomargin" style="margin-right: 15px;">To:</h2>
+                        <h2 class="fill nomargin" style="text-align: right;">{{ journey.Destination }}</h2>
+                    </div>
+                    <div class="horizontalSeparatorLine"></div>
+
+                    <div class="row">
+                        <h2 class="nomargin">
+                            {% if journey.CompanyID == 1 %}
+                            <i class="fa-solid fa-plane" style="margin-left: 10px; margin-right: 10px;"></i>
+                            {% elif journey.CompanyID == 2 %}
+                            <i class="fa-solid fa-train" style="margin-left: 10px; margin-right: 10px;"></i>
+                            {% endif %}
+                        </h2>
+                        <h2 class="fill nomargin" style="text-align: right;">{{ dateStr }}</h2>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <div class="horizontalSeparatorLine" style="margin: 10px 5px 5px auto; width: 130px;"></div>
+                        <p>Departing at {{ journey.DepartureTime }}</p>
+                        <p>Arriving at {{ journey.ArrivalTime }}</p>
+                        <p>Duration {{ journey.JourneyDuration }}</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h2 class="nomargin">Checkout</h2>
+                    <div class="horizontalSeparatorLine" style="margin: 5px auto 5px 0px; width: 130px;"></div>
+                    <h3 style="margin-top: 0px; margin-bottom: 5px;">{{ passengers }} Passenger{% if passengers != '1'
+                        %}s{% endif
+                        %}.</h3>
+                    <p style="margin-bottom: 7px;">{{ passengers }} {{ seattype }} seat{% if passengers != '1' %}s{%
+                        endif
+                        %} at
+                        £{{ journey.TicketPrice }} {% if passengers != '1' %}each{% endif %}</p>
+
+
+                    <a class="htbutton smallbtn" href="{{ url_for('changeSeatType') }}" style="margin-left: 0px;">
+                        {% if seattype == 'Standard' %}Upgrade to First class
+                        {% else %}Switch to Standard
+                        {% endif %}
+                        ticket{% if passengers != '1' %}s{% endif
+                        %}</a>
+
+                    <h2 style="margin-bottom: 5px; margin-top: 20px;">Total: £{{ journey.TotalPrice }}</h2>
+                </div>
+                <div class="horizontalSeparatorLine"></div>
+
+                {% if journey.HasDeparted %}
+                <button class="htbutton redbutton">Departed</button>
+                {% elif not journey.SeatsLeft %}
+                <button class="htbutton disabledbutton">No seats available</button>
+                {% else %}
+                <button class="htbutton" onclick="BookTicket()">Book ticket{% if passengers != '1' %}s{% endif %} £{{
+                    journey.TotalPrice
+                    }}</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/JourneyScripts.js')}}"></script>
+    <script>
+        document.querySelectorAll('input[name="card"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                const targetElement = document.getElementById('addNewCard');
+                if (this.value === 'newcard') {
+                    targetElement.style.display = 'flex'; // Show the element
+                } else {
+                    targetElement.style.display = 'none'; // Hide the element
+                }
+            });
+        });
+
+        const nameinput = document.getElementById('name');
+        nameinput.addEventListener('input', function () {
+            // Remove invalid characters
+            this.value = this.value.replace(/[^a-zA-Z\s'-]/g, '');
+        });
+
+        const cardInput = document.getElementById('card-number');
+        cardInput.addEventListener('input', function () {
+            let cursorPosition = this.selectionStart;
+            const previousValue = this.value;
+
+            // Remove all spaces to start clean
+            this.value = this.value.replace(/ /g, '');
+
+            // Insert a space every 4 digits
+            this.value = this.value.replace(/(.{4})/g, '$1 ').trim();
+
+            // Remove invalid characters (only digits and spaces allowed)
+            this.value = this.value.replace(/[^0-9 ]/g, '');
+
+            // Limit the input length to 19 characters (16 digits + 3 spaces)
+            if (this.value.length > 19) {
+                this.value = this.value.slice(0, 19);
+            }
+
+            // Adjust cursor position intelligently
+            let newCursorPosition = cursorPosition;
+            if (this.value.length > previousValue.length && newCursorPosition % 5 === 0) {
+                // Move cursor forward when a space is added
+                newCursorPosition++;
+            } else if (this.value.length < previousValue.length && previousValue.charAt(cursorPosition - 1) === ' ') {
+                // Move cursor back when a space is removed
+                newCursorPosition--;
+            }
+
+            this.setSelectionRange(newCursorPosition, newCursorPosition);
+        });
+
+        const expdateinput = document.getElementById('exp-date');
+        expdateinput.addEventListener('input', function () {
+            const cursorPosition = this.selectionStart;
+
+            // Automatically add the "/" when typing
+            this.value = this.value.replace(/\//g, '');
+            if (!this.value.includes('/')) {
+                if (this.value.length >= 2) {
+                    this.value = this.value.slice(0, 2) + "/" + this.value.slice(2);
+                }
+            }
+            // Remove invalid characters (only digits and "/")
+            this.value = this.value.replace(/[^0-9\/]/g, '');
+            if (this.value.length > 5)
+                this.value = this.value.slice(0, 5);
+
+            let newCursorPosition = cursorPosition;
+            if (cursorPosition > 2 && this.value.length > cursorPosition) {
+                newCursorPosition++;
+            }
+            if (newCursorPosition === 3 && this.value.length === 3) newCursorPosition = 2;
+
+            this.setSelectionRange(newCursorPosition, newCursorPosition);
+        });
+
+        const cvvinput = document.getElementById('cvv');
+        cvvinput.addEventListener('input', function () {
+            // Remove invalid characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        function BookTicket() {
+            const cardSelectForm = document.getElementById('cardSelect');
+            const newCardForm = document.getElementById('addNewCard');
+
+            if (cardSelectForm) {
+                const cardid = document.querySelector('input[name="card"]:checked');
+
+                // Check the value of the selected radio button
+                if (cardid.value === 'newcard') {
+                    if (formFilled())
+                        newCardForm.submit();
+                }
+                else {
+                    cardSelectForm.submit();
+                }
+
+            }
+            else if (formFilled())
+                newCardForm.submit();
+        }
+
+        function formFilled() {
+            const cardnumpattern = /^(\d{4} ){3}\d{4}$/;
+            const expdatepattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+            const cvvpattern = /^\d{3}$/;
+            const errormsg = document.getElementById('carderrormsg');
+
+            if (nameinput.value.length <= 0) {
+                errormsg.innerHTML = 'Please enter your full name.';
+                errormsg.style.display = 'inline';
+                return false;
+            }
+            if (!cardnumpattern.test(cardInput.value)) {
+                errormsg.innerHTML = 'Please enter a valid card number.';
+                errormsg.style.display = 'inline';
+                return false;
+            }
+            if (!expdatepattern.test(expdateinput.value)) {
+                errormsg.innerHTML = 'Please enter a valid expiration date.';
+                errormsg.style.display = 'inline';
+                return false;
+            }
+            const [month, year] = expdateinput.value.split('/').map(Number);
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth() + 1;
+            const currentYear = currentDate.getFullYear() % 100;
+            // Validate the expiration date
+            if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                errormsg.innerHTML = 'This card has expired, please use a different one.';
+                errormsg.style.display = 'inline';
+                return false; // Card has expired
+            }
+            if (!cvvpattern.test(cvvinput.value)) {
+                errormsg.innerHTML = 'Please enter a valid CVV.';
+                errormsg.style.display = 'inline';
+                return false;
+            }
+            errormsg.style.display = 'none';
+            return true;
+        }
+    </script>
+</body>
+
+</html>

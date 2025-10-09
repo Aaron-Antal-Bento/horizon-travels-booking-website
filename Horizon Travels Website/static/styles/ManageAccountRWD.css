@@ -1,0 +1,97 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+@media only screen and (max-width: 720px) {
+    .verticalSeparatorLine.b {
+        display: none;
+    }
+
+    .horizontalSeparatorLine {
+        display: inline;
+        order: 2;
+    }
+
+    #fourth{
+        order: 4;
+    }
+
+    .pageContents {
+        flex-direction: column;
+    }
+
+    #manageAccountPage {
+        margin: auto;
+        order: 3;
+    }
+
+    .sideBar {
+        margin: auto;
+        margin-top: 70px;
+        order: 1;
+    }
+
+    #backbutton {
+        position: absolute;
+        left: 20px;
+        top: 90px;
+    }
+
+    .page2backbutton#backbutton {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+
+    #planJourney {
+        display: none;
+    }
+
+    #deleteaccountbuttonholder {
+        margin-top: 20px;
+    }
+
+    #userscards {
+        order: 5;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .verticalSeparatorLine.a {
+        display: none;
+    }
+
+    #manageAccountPage {
+        flex: 1;
+    }
+
+    #accountName {
+        text-align: center;
+    }
+
+    @media only screen and (min-width: 720px) {
+        .pageContents {
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        #userscards {
+            order: 5;
+            flex-basis: 100%;
+            position: relative;
+            overflow-x: hidden;
+            padding-top: 15px;
+        }
+
+        #cardScroll {
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        #cardsHolder {
+            width: max-content;
+        }
+
+        .cardholder {
+            margin: 10px;
+            display: inline-block;
+        }
+    }
+}

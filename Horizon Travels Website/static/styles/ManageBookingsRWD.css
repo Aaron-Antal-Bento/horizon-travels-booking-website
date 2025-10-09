@@ -1,0 +1,76 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+@media only screen and (max-width: 890px) {
+    #MBPage {
+        flex-direction: column;
+        height: calc(100vh - 108px);
+    }
+
+    #journeys {
+        zoom: 0.8;
+    }
+
+    .verticalSeparatorLine {
+        display: none;
+    }
+
+    .sideBar {
+        margin: auto;
+        margin-top: 10px;
+        order: 1;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    #ticketsSection {
+        margin: auto;
+        order: 3;
+        width: 100%;
+    }
+
+    .horizontalSeparatorLine {
+        display: inline;
+        order: 2;
+    }
+
+    .journeyType {
+        display: inline;
+        width: fit-content;
+        font-size: 16px;
+        padding: 12px;
+        width: calc(50% - 10px);
+        margin: 0;
+        border-radius: 7px 7px 0 0;
+    }
+
+    .journeyType:hover {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .activeJourneyType {
+        padding: 8px;
+    }
+
+    #JTHManage {
+        flex-grow: 1;
+        height: fit-content;
+        margin: auto 0 0 15px;
+    }
+
+    #backbutton {
+        margin-top: 15px;
+        height: 60px;
+        width: 80px;
+        font-size: 35px;
+    }
+
+    #backbutton:hover {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (max-width: 985px) and (min-width: 620px) {
+    #journeys {
+        zoom: 0.88;
+    }
+}

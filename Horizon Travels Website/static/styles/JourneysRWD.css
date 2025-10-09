@@ -1,0 +1,104 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+#journeys {
+    zoom: 0.7;
+}
+
+/* increase zoom and back button size */
+@media only screen and (min-width: 650px) {
+    #journeys {
+        zoom: 0.85;
+        margin-top: 200px;
+    }
+
+    #backbutton {
+        top: 95px;
+        height: 51px;
+        width: 68px;
+        font-size: 30px;
+    }
+
+    #backbutton:hover {
+        font-size: 30px;
+    }
+
+    .longerLable {
+        display: inline;
+    }
+}
+
+/* move side bar to top and center journeys */
+@media only screen and (max-width: 819.9px) {
+    .outer-section {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    #journeyTypeHolder {
+        position: fixed;
+        left: 50%;
+        top: 102px;
+        width: max-content;
+
+        -webkit-transform: translateX(-50%) skewY(0deg);
+        -ms-transform: translateX(-50%) skewY(0deg);
+        transform: translateX(-50%) skewY(0deg);
+    }
+
+    .journeyType {
+        width: fit-content;
+        border-radius: 7px 7px 0px 0px;
+    }
+
+    .verticalSeparatorLine {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 760px) {
+    .journeyType {
+        font-size: 13.5px;
+    }
+
+    #journeyTypeHolder {
+        top: 106px;
+    }
+}
+
+/* uncenter date and increase zoom */
+@media only screen and (min-width: 820px) {
+    #journeys {
+        margin-top: 170px;
+    }
+
+    #backbutton {
+        top: 90px;
+        height: 60px;
+        width: 80px;
+        font-size: 35px;
+    }
+
+    #backbutton:hover {
+        font-size: 40px;
+    }
+
+    #leftsidecentered {
+        display: none;
+    }
+
+    #selectionBarBg {
+        display: none;
+    }
+
+    .journeyType {
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* back button and selection menu go from top to side */
+@media only screen and (min-width: 1050px) {
+    #journeys {
+        margin-top: 130px;
+        zoom: 1;
+        width: 721px;
+    }
+}

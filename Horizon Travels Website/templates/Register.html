@@ -1,0 +1,177 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Register to Horizon Travels</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/AccountCSS.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css')}}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content">
+                <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey">Plan a Journey</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey"
+            style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93%);">Plan a Journey</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 92%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 91.5%, 0% 89%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="pageContents" style="height: 800px;">
+        <button id="backbutton" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></button>
+
+        <div class="backgroundImage"></div>
+        <div class="signInContent" id="register">
+            <p id="accounterror" style="top: 467px;"> {{error}} </p>
+            <form id="userdetails" action="{{ url_for('register') }}" method="post">
+                <div>
+                    <label for="Fname"><b>First name</b></label>
+                    <div style="position: relative;">
+                        <input type="text" placeholder="First name" name="Fname" value="{{request.form.Fname}}"
+                            style="margin-bottom: 5px;">
+                        <span id="fnameerrormsg" style="margin-top: -3px; width: fit-content; right: 5px;">
+                            <p style="margin: 0px; width: fit-content;">Please enter your name</p>
+                        </span>
+                    </div>
+                    <label for="Lname"><b>Last name</b></label>
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Last name (optional)" name="Lname"
+                            value="{{request.form.Lname}}">
+                    </div>
+
+                    <label for="email"><b>Email</b></label>
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Email address" name="email" value="{{request.form.email}}">
+                        <span id="emailerrormsg" style="width: fit-content; right: 5px; margin-top: -20px;">
+                            <p style="margin: 0px; width: fit-content;">Please enter your email</p>
+                        </span>
+                    </div>
+
+                    <label for="password"><b>Password</b></label>
+                    <span id="vaildpwderrormsg" style="color: red; display: none;"> Your password
+                        must contain 8 characters</span>
+                    <div style="position: relative;">
+                        <input id="password" type="password" placeholder="Password" name="password"
+                            value="{{request.form.password}}" style="margin-bottom: 5px;">
+                        <span id="pwderrormsg" style="margin-top: -3px; width: fit-content; right: 5px;">
+                            <p style="margin: 0px; width: fit-content;">Please enter a password</p>
+                        </span>
+                    </div>
+                    <label><b>Confirm password</b></label>
+                    <div style="position: relative;">
+                        <input id="confirmpwd" type="password" placeholder="Re-enter password">
+                        <span id="pwdmatcherrormsg" style="width: fit-content; right: 5px;">
+                            <p style="margin: 0px; width: fit-content;">Passwords do not match</p>
+                        </span>
+                    </div>
+
+                    <p style="top: 442px; margin: -5px; font-size: 12.65px;">By creating an account you agree to our <a href="#terms">Terms &amp; Conditions</a>.</p>
+                    <button type="submit">Create account</button>
+
+                    <label style="width: fit-content; margin-left: 5px; font-size: medium;">
+                        <input class="inline" type="checkbox" name="remember" {% if request.form.remember %} checked {%
+                            endif %}>
+                        Remember me
+                    </label>
+                    <span style="text-align: center; margin-top: 10px; margin-bottom: -10px; font-size: 15px;">Already
+                        have an account? <a href="{{ url_for('signin') }}">Sign in</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<Script>
+    document.getElementById("userdetails").addEventListener("submit", function (event) {
+        const emailField = document.querySelector('input[name="email"]');
+        const emailErrMsg = document.querySelector('#emailerrormsg');
+        const pwdField = document.querySelector('#password');
+        const pwdErrMsg = document.querySelector('#pwderrormsg');
+        const validpwdErrMsg = document.querySelector('#vaildpwderrormsg');
+        const pwdconfirmField = document.querySelector('#confirmpwd');
+        const pwdconfirmErrMsg = document.querySelector('#pwdmatcherrormsg');
+        const nameField = document.querySelector('input[name="Fname"]');
+        const nameErrMsg = document.querySelector('#fnameerrormsg');
+        const lnameField = document.querySelector('input[name="Lname"]');
+
+        let valid = true;
+
+        if (!nameField.value) {
+            event.preventDefault();
+            nameErrMsg.style.display = 'block';
+            valid = false;
+        } else {
+            nameErrMsg.style.display = 'none';
+        }
+
+        if (!emailField.value) {
+            event.preventDefault();
+            emailErrMsg.style.display = 'block';
+            valid = false;
+        } else {
+            emailErrMsg.style.display = 'none';
+        }
+
+        if (!pwdField.value) {
+            event.preventDefault();
+            pwdErrMsg.style.display = 'block';
+            valid = false;
+        } else {
+            if (pwdField.value.length < 8) {
+                event.preventDefault();
+                validpwdErrMsg.style.display = 'block';
+                pwdconfirmField.value = '';
+                valid = false;
+            }
+            else {
+                validpwdErrMsg.style.display = 'none';
+            }
+            pwdErrMsg.style.display = 'none';
+        }
+
+        if (pwdField.value != pwdconfirmField.value) {
+            event.preventDefault();
+            pwdconfirmErrMsg.style.display = 'block';
+            pwdconfirmField.value = '';
+            valid = false;
+        } else {
+            pwdconfirmErrMsg.style.display = 'none';
+        }
+
+        if (valid){
+            nameField.value = nameField.value.trim()
+            lnameField.value = lnameField.value.trim()
+            nameField.value = nameField.value.charAt(0).toUpperCase() + nameField.value.slice(1);
+            lnameField.value = lnameField.value.charAt(0).toUpperCase() + lnameField.value.slice(1);
+        }
+        return valid; // Allow submission only if all fields are valid
+    });
+    function goBack() {
+        window.history.back();
+    }
+</Script>
+
+</html>

@@ -1,0 +1,490 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Title of the webpage -->
+  <title>Horizon Travels</title>
+
+  <!-- Link to Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+  <!-- Link to the main CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTMainCSS.css')}}" />
+  <!-- Link to the Display Cards CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/DisplayCardsCSS.css')}}" />
+  <!-- Link to the navigation bar CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+  <!-- Link to the responsive design CSS files -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/BookingSecContentRWD.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/RWD.css')}}" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS and JS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css')}}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Ensure proper rendering on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}"
+    media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}"
+    media="(prefers-color-scheme: dark)">
+</head>
+
+<body class="homePage" onload="start()">
+  <!-- Navigation bar -->
+  <div class="topnav">
+    <div class="dpmenu">
+      <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+"><i class="fa fa-bars"></i></button>
+      <div id="keepActive"></div>
+      <div class="content">
+        <a class="navLinks" href="{{ url_for('managebookings') }}">Manage Bookings</a>
+        <a class="navLinks" href="{{ url_for('about') }}">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+      </div>
+    </div>
+    <a id="signIn" href="{{ url_for('signin') }}" aria-label="Sign in to your account">Sign In</a>
+    <a id="manageaccount" href="{{ url_for('account') }}" aria-label="Manage your account" style="display: none;"><span
+        id="usersname"></span></a>
+    <a class="navLinks" href="{{ url_for('managebookings') }}" aria-label="Manage your bookings" style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93.5%);
+">Manage Bookings</a>
+    <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 92%);
+">About</a>
+    <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 91.5%, 0% 88%);
+">Destinations</a>
+    <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+        src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+    <div id="navangledbg"></div>
+  </div>
+  <div class="backgroundImage"></div>
+  <div class="pageContents">
+    <!-- Booking section -->
+    <div class="booking">
+      <div class="bookingSelectionHolder">
+        <!-- Origin dropdown menu -->
+        <div class="dropdown">
+          <input class="dropinput" type="text" id="originInput" style="display: none;" placeholder="From:">
+          <button class="dropbtn" id="origins">From: <i class="fa fa-location-dot" id="buttonicon"></i></button>
+          <div class="dropdown-content" id="originscontent">
+            <button class="dropdowncontentbutton"
+              style="font-weight: bold; background-color: #f5f5f5;" id="all">Any&nbsp;Origin</button>
+            {% for o in orgn %}
+            <button class="dropdowncontentbutton">{{ o }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- Destination dropdown menu -->
+        <div class="dropdown">
+          <input class="dropinput" type="text" id="destInput" style="display: none;" placeholder="To:">
+          <button class="dropbtn" id="destinations">To: <i class="fa fa-map-location-dot" id="buttonicon"></i></button>
+          <div class="dropdown-content" id="destinationscontent">
+            <button class="dropdowncontentbutton"
+              style="font-weight: bold; background-color: #f5f5f5; padding-right: 0;" id="all">Any&nbsp;Destination</button>
+            {% for d in dest %}
+            <button class="dropdowncontentbutton">{{ d }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- Passengers dropdown menu -->
+        <div class="dropdown">
+          <input class="dropinput" type="number" id="passInput" style="display: none;" value="1" min="1" max="8">
+          <button class="dropbtn" id="passengers">1 Passenger</button>
+          <div class="dropdown-content" id="passengerselect">
+            <button class="dropdowncontentbutton" style="background-color: #f5f5f5;">1</button>
+            <button class="dropdowncontentbutton">2</button>
+            <button class="dropdowncontentbutton">3</button>
+            <button class="dropdowncontentbutton">4</button>
+            <button class="dropdowncontentbutton">5</button>
+            <button class="dropdowncontentbutton">6</button>
+            <button class="dropdowncontentbutton">7</button>
+            <button class="dropdowncontentbutton">8</button>
+          </div>
+        </div>
+        <!-- Date selector -->
+        <button id="dateselector" class="dropbtn">Day 00 of Mth 0000 <!-- Default to current date-->
+          <input type="date" class="datepicker-native-input" id="dateselectorinput" onchange="getDate()" />
+        </button>
+      </div>
+      <!-- Search button -->
+      <button type="button" id="search">Search <i id="switchtoloading" class="fa fa-magnifying-glass"
+          style="position: relative; right: -4px; scale: 1.2;"></i></button>
+
+      <div id="PromotionHolder" style="width: 100%; justify-content: space-between;">
+        <img id="PromotionImage" class="fade" style="height: 100%; width: 220px; margin: auto;"
+          src="{{ url_for('static', filename='styles/images/PromotionImage.jpg')}}" alt="Promotion image">
+        <div class="promotion" style="max-width: 450px; margin-left: auto; padding: 10px;">
+          <h1>Book your tickets in advance to enjoy exclusive discounts!</h1>
+          <p>
+            <span><strong>25% off</strong> when you book 80 days before your journey</span>
+            <span><strong>15% off</strong> for bookings 60 days in advance</SPan>
+            <SPan><strong>10% off</strong> for 45 days in advance!</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Travel Methods section -->
+    <div class="travelmethods">
+      <div id="skewbg"> </div>
+      <h2 class="title">OUR TRANSPORTATION</h2>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 100%;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators" style=" z-index: 1; ">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="displaycard" style=" height: 422px; ">
+              <img src="{{ url_for('static', filename='styles/images/Air Travel.jpg')}}" alt="Air Travel">
+              <div id="angledbackground"></div>
+              <div id="displaytext">
+                <h3 class="methodoftravel">TRAVEL BY AIR</h3>
+                <p>UKAir is your go-to choice for affordable and comfortable flights across the United
+                  Kingdom. Fly
+                  smarter and travel comfortably
+                  with UKAir—where affordability meets relaxation.</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="displaycard" style=" height: 422px; ">
+              <img src="{{ url_for('static', filename='styles/images/Rail Travel.jpg')}}" alt="Rail Travel">
+              <div id="angledbackground"></div>
+              <div id="displaytext">
+                <h3 class="methodoftravel">TRAVEL BY RAIL</h3>
+                <p>BritishTrains offers a perfect blend of comfort and affordability for travelers
+                  exploring
+                  the
+                  United
+                  Kingdom. Choose BritishTrains for a journey that’s
+                  as enjoyable as the destination.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom section -->
+    <div class="bottombg"></div>
+    <!-- Destination section -->
+    <div class="destinationdisplay">
+      <!-- Travel methods display for when not in desktop RWD -->
+      <div id="travelmethodscontainer">
+        <h2 class="title">OUR TRANSPORTATION</h2>
+        <div id="myCarousel3" class="carousel slide" data-ride="carousel" style="width: 100%;">
+          <!-- Indicators -->
+          <ol class="carousel-indicators" style=" z-index: 1; ">
+            <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel3" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="carouselslideholder" id="0"
+                style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+                <div class="displaycard" id="0" style=" height: 422px; ">
+                  <img src="{{ url_for('static', filename='styles/images/Air Travel.jpg')}}" alt="Air Travel">
+                  <div id="angledbackground"></div>
+                  <div id="displaytext">
+                    <h3 class="methodoftravel">TRAVEL BY AIR</h3>
+                    <p>UKAir is your go-to choice for affordable and comfortable flights across the United
+                      Kingdom. Fly
+                      smarter and travel comfortably
+                      with UKAir—where affordability meets relaxation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="carouselslideholder" id="1"
+                style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+                <div class="displaycard" id="1" style=" height: 422px; ">
+                  <img src="{{ url_for('static', filename='styles/images/Rail Travel.jpg')}}" alt="Rail Travel">
+                  <div id="angledbackground"></div>
+                  <div id="displaytext">
+                    <h3 class="methodoftravel">TRAVEL BY RAIL</h3>
+                    <p>BritishTrains offers a perfect blend of comfort and affordability for travelers
+                      exploring
+                      the
+                      United
+                      Kingdom. Choose BritishTrains for a journey that’s
+                      as enjoyable as the destination.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="separatorLine"></div>
+      </div>
+
+      <!-- Destinations display -->
+      <h2 class="title">OUR DESTINATIONS</h2>
+      <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="10000" style="width: 100%;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel2" data-slide-to="1"></li>
+          <li data-target="#myCarousel2" data-slide-to="2"></li>
+          <li data-target="#myCarousel2" data-slide-to="3"></li>
+          <li data-target="#myCarousel2" data-slide-to="4"></li>
+          <li data-target="#myCarousel2" data-slide-to="5"></li>
+          <li data-target="#myCarousel2" data-slide-to="6"></li>
+          <li data-target="#myCarousel2" data-slide-to="7"></li>
+          <li data-target="#myCarousel2" data-slide-to="8"></li>
+          <li data-target="#myCarousel2" data-slide-to="9"></li>
+          <li data-target="#myCarousel2" data-slide-to="10"></li>
+          <li data-target="#myCarousel2" data-slide-to="11"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="carouselslideholder" id="0"
+              style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+              <div id="0" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Aberdeen.jpg')}}" alt="Aberdeen">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">ABERDEEN</h3>
+                  <p>Discover Aberdeen, where historic charm, vibrant culture, stunning coastlines, and delicious local
+                    cuisine converge for an unforgettable Scottish adventure!</p>
+                </div>
+              </div>
+              <div id="1" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Birmingham.jpg')}}"
+                  alt="Birmingham">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">BIRMINGHAM</h3>
+                  <p>Experience Birmingham, a city where vibrant culture, dynamic arts, world-class cuisine, and
+                    historic industrial heritage come together for an unforgettable urban adventure!</p>
+                </div>
+              </div>
+              <div id="2" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Bristol.jpg')}}" alt="Bristol">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">BRISTOL</h3>
+                  <p>Immerse yourself in Bristol, where cutting-edge creativity, historic landmarks, and a lively
+                    harborfront create an unforgettable cultural experience in the heart of England!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carouselslideholder" id="1"
+              style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+              <div id="3" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Cardiff.jpg')}}" alt="Cardiff">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">CARDIFF</h3>
+                  <p>Experience Cardiff, a city where rich Welsh heritage, vibrant arts, stunning architecture, and a
+                    lively waterfront converge for an unforgettable cultural journey!</p>
+                </div>
+              </div>
+              <div id="4" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Dundee.jpg')}}" alt="Dundee">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">DUNDEE</h3>
+                  <p>Discover Dundee, a city where innovative spirit, rich cultural heritage, stunning waterfront, and
+                    the renowned V&A Dundee create an unforgettable Scottish experience!</p>
+                </div>
+              </div>
+              <div id="5" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Edinburgh.jpg')}}" alt="Edinburgh">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">EDINBURGH</h3>
+                  <p>Discover Edinburgh, where the enchantment of historic castles, world-famous festivals, inspiring
+                    literary history, and the rugged beauty of Arthur's Seat make it a must visit city!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carouselslideholder" id="2"
+              style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+              <div id="6" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Glasgow.jpg')}}" alt="Glasgow">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">GLASGOW</h3>
+                  <p>Immerse yourself in Glasgow, a city where vibrant arts, dynamic music scenes, world-class museums,
+                    and warm Scottish hospitality create a lively and unforgettable experience!</p>
+                </div>
+              </div>
+              <div id="7" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/London.jpg')}}" alt="London">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">LONDON</h3>
+                  <p>Experience the magic of London, where iconic landmarks, diverse cultural experiences, world-class
+                    dining, and rich history come together to create the capital of England!</p>
+                </div>
+              </div>
+              <div id="8" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Manchester.jpg')}}"
+                  alt="Manchester">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">MANCHESTER</h3>
+                  <p>Visit Manchester, a city where pioneering music, thriving arts, diverse culture, and rich
+                    industrial heritage create an electrifying atmosphere that you won't want to miss!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="carouselslideholder" id="3"
+              style="width: 80%; display: flex; justify-content: space-evenly; margin: auto;">
+              <div id="9" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Newcastle.jpg')}}" alt="Newcastle">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">NEWCASTLE</h3>
+                  <p>Explore Newcastle, a city where vibrant nightlife, rich industrial heritage, stunning quayside, and
+                    a spirited arts scene create an exciting and unforgettable experience!</p>
+                </div>
+              </div>
+              <div id="10" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Portsmouth.jpg')}}"
+                  alt="Portsmouth">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">PORTSMOUTH</h3>
+                  <p>Discover Portsmouth, a city where rich maritime heritage, vibrant waterfront, historic naval
+                    attractions, and charming seaside culture combine for an unforgettable coastal experience!</p>
+                </div>
+              </div>
+              <div id="11" class="displaycard" style=" height: 402px; ">
+                <img src="{{ url_for('static', filename='styles/images/Destinations/Southampton.jpg')}}"
+                  alt="Southampton">
+                <div id="angledbackground"></div>
+                <div id="displaytext">
+                  <h3 class="methodoftravel">SOUTHAMPTON</h3>
+                  <p>Explore Southampton, a city where rich maritime history, vibrant cultural scenes, scenic
+                    waterfront, and dynamic arts combine to create an unforgettable coastal adventure!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="pageBottom">
+      <div class="separatorLine" style="margin-top: 0;"></div>
+
+      <img style="margin: auto; width: 300px; filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.2));"
+        src="{{ url_for('static', filename='styles/images/Logo/HTLogo.png')}}" alt="HT Logo">
+      <h1 class="promotionh1" style="margin-top: 30px; margin-bottom: 15px; text-align: center;">ENJOY THE BEST
+        EXPERIENCES WHEN YOU BOOK WITH HORIZON TRAVELS.</h1>
+      <div style="position: absolute; bottom: 0; width: 100%; height: 500px; background-color: #5299efe7; z-index: -2;">
+      </div>
+      <footer>
+        <div class="footer-container">
+          <!-- Quick Navigation Links -->
+          <div class="footer-column">
+            <div class="footer-disp">
+              <h4>Quick Navigation</h4>
+              <ul>
+                <li><a href="/HorizonTravels">Home</a></li>
+                <li><a href="/HorizonTravels/account">Account</a></li>
+                <li><a href="/HorizonTravels/destinations">Destinations</a></li>
+                <li><a href="/HorizonTravels/about">About</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Legal Information -->
+          <div class="footer-column">
+            <div class="footer-disp">
+              <h4>Legal Information</h4>
+              <ul>
+                <li><a href="#terms">Terms &amp; Conditions</a></li>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#cookies">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Customer Support -->
+          <div class="footer-column">
+            <div class="footer-disp">
+              <h4>Customer Support</h4>
+              <ul>
+                <li><a href="/HorizonTravels/about">Contact Us</a></li>
+                <li><a href="#FAQ">FAQs</a></li>
+                <li><a href="#livechat">Live Chat</a></li>
+                <li><a href="#help">Help Center</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    {% if cookies %}
+    <div id="cookieConsentHolder" style="width: 100%; position: fixed; left: 0; right: 0; bottom: 10px; z-index: 1000;">
+      <div id="cookieConsentBanner">
+        <h2>We use cookies to improve your experience.</h2>
+        <p style="margin: auto; margin-bottom: 25px; text-align: left; max-width: 800px;">We value your privacy! By
+          clicking "Accept Cookies", you agree to the use of cookies to enhance site
+          navigation. <a href="#cookies">Cookie Policy</a>.</p>
+        <button id="acceptCookies">Yes, Accept Cookies</button>
+        <button id="declineCookies">No, Thanks</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      const cookieBanner = document.getElementById("cookieConsentHolder");
+      // Add the "visible" class to trigger the transition
+      
+      cookieBanner.classList.add("visible");
+    });
+
+      // Function to send the cookie consent preference to the backend
+      function sendCookiePreference(preference) {
+        fetch('/save_cookie_preference', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ cookieConsent: preference })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Preference saved:', data);
+          })
+          .catch(error => {
+            console.error('Error saving preference:', error);
+          });
+      }
+
+      // Add event listeners to the buttons
+      document.getElementById('acceptCookies').addEventListener('click', function () {
+        sendCookiePreference('accepted');
+        document.getElementById('cookieConsentBanner').style.display = 'none';
+      });
+      document.getElementById('declineCookies').addEventListener('click', function () {
+        sendCookiePreference('declined');
+        document.getElementById('cookieConsentBanner').style.display = 'none';
+      });
+    </script>
+    {% endif %}
+  </div>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/HomePageScripts.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/DestinationsResize.js')}}"></script>
+</body>
+
+</html>

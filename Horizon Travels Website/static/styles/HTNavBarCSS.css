@@ -1,0 +1,173 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+
+/* style for nav bar */
+.topnav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  background-color: #e8f0ff;
+  /* #467AB3 */
+  z-index: 2;
+
+  line-height: normal;
+}
+
+/* style for default links in nav bar */
+.navLinks,
+.btn,
+#signIn,
+#manageaccount {
+  background-color: #5298ef;
+  border: 2px solid #333;
+  border-bottom: 0px;
+  margin: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  float: right;
+  padding: 16px;
+  padding-top: 26px;
+  padding-bottom: 32px;
+}
+
+#signIn,
+#manageaccount {
+  clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 95.5%);
+}
+
+.btn {
+  width: 70px;
+  padding: 29px 16px;
+}
+
+.navLinks {
+  display: none;
+}
+
+/* style for links that are being hovered */
+.navLinks:hover,
+#signIn:hover,
+.btn:hover {
+  background-color: #3d71b0;
+  cursor: pointer;
+  text-decoration: underline;
+  color: white;
+}
+
+#manageaccount:hover {
+  background-color: #3d71b0;
+  cursor: pointer;
+  color: white;
+}
+
+#manageaccount:hover #usersname {
+  text-decoration: underline;
+}
+
+/*style for dopdown on small screens*/
+.btn:hover {
+  text-decoration: none;
+}
+
+.dpmenu {
+  float: right;
+  overflow: hidden;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 90px;
+  margin-left: -119px;
+  -webkit-transform: skewY(1deg);
+  -ms-transform: skewY(1deg);
+  transform: skewY(1deg);
+}
+
+#keepActive {
+  display: none;
+  position: absolute;
+  margin-top: 80px;
+  margin-left: -120px;
+  width: 197px;
+  height: 13px;
+  z-index: 1;
+}
+
+#keepActive:hover {
+  display: block;
+}
+
+.dpmenu:hover .content,
+.dpmenu:hover #keepActive {
+  display: block;
+}
+
+.content a {
+  float: none;
+  display: block;
+  text-align: right;
+  padding: 14px 16px;
+  text-decoration: none;
+  width: 189px;
+  border: 1px solid #333;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* style for left of nav bar */
+.topnav .left {
+  float: left;
+}
+
+/* style for home link */
+.topnav #home {
+  /* make logo evenly spaced as page resizes */
+  padding: calc(-5 / 518 * 100vw + 24.8237px);
+  padding-right: 0px;
+}
+
+.topnav #home img {
+  width: 140px; /* Sets the width of the image */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+.topnav #home:hover {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+#navangledbg {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 65px;
+  margin-top: 58px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#navangledbg:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 49px;
+  margin-top: -20px;
+  background: #e8f0ff;
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skewY(1deg);
+  -ms-transform: skewY(1deg);
+  transform: skewY(1deg);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+}

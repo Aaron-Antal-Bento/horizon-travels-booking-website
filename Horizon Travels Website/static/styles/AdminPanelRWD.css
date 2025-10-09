@@ -1,0 +1,108 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+@media only screen and (max-width: 810px) {
+    #AdminPPG {
+        flex-direction: column;
+        height: calc(100vh - 108px);
+    }
+
+    .verticalSeparatorLine {
+        display: none;
+    }
+
+    .sideBar {
+        margin: auto;
+        margin-top: 10px;
+        order: 1;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .panel {
+        margin: auto;
+        order: 3;
+        width: 100%;
+    }
+
+    .horizontalSeparatorLine {
+        display: inline;
+        order: 2;
+    }
+
+    .journeyType {
+        display: inline;
+        width: fit-content;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .journeyType:hover {
+        padding: 6px;
+        cursor: pointer;
+    }
+
+    .activeJourneyType {
+        padding: 6px;
+    }
+
+    #JTHManage {
+        margin-left: 5px;
+        flex-grow: 1;
+    }
+
+    .longText {
+        display: none;
+    }
+
+    #addjourneystickyholder {
+        position: relative;
+    }
+
+    #showjourneysbtn {
+        position: relative;
+        top: 0px;
+    }
+    #backbutton {
+        margin-top: 0px;
+        height: 38px;
+        width: 60px;
+        font-size: 25px;
+    }
+    
+    #backbutton:hover {
+        font-size: 29px;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 810px) {
+    .journeyType {
+        font-size: 16px;
+        padding: 12px;
+        width: calc(50% - 10px);
+    }
+
+    .journeyType:hover {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .activeJourneyType {
+        padding: 8px;
+    }
+    .longText {
+        display: inline;
+    }
+    #JTHManage {
+        margin-left: 15px;
+    }
+
+    #backbutton {
+        margin-top: 15px;
+        height: 60px;
+        width: 80px;
+        font-size: 35px;
+    }
+    
+    #backbutton:hover {
+        font-size: 40px;
+    }
+}

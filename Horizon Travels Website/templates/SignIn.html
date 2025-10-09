@@ -1,0 +1,116 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Sign In to Horizon Travels</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/AccountCSS.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css')}}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content">
+                <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey">Plan a Journey</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey"
+            style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93%);">Plan a Journey</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 92%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 91.5%, 0% 89%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="pageContents">
+        <button id="backbutton" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></button>
+
+        <div class="backgroundImage"></div>
+        <div class="signInContent">
+            <p id="accounterror"> {{error}} </p>
+            <form id="userdetails" action="{{ url_for('signin') }}" method="post">
+                <div>
+                    <label for="email"><b>Email</b></label>
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Email address" name="email" value="{{request.form.email}}">
+                        <span id="emailerrormsg">
+                            <p style="margin: 0;">Please enter your email</p>
+                        </span>
+                    </div>
+
+                    <label for="password"><b>Password</b></label>
+                    <div style="position: relative;">
+                        <input type="password" placeholder="Password" name="password" value="{{request.form.password}}">
+                        <span id="pwderrormsg">
+                            <p style="margin: 0px;">Please enter your password</p>
+                        </span>
+                    </div>
+                    <span class="lableRight" style="top: 180px;"><a href="#">Forgot password?</a></span>
+                    <br>
+
+                    <button type="submit">Login</button>
+
+                    <label style="width: fit-content; margin-left: 5px; font-size: medium;">
+                        <input class="inline" type="checkbox" name="remember" {% if request.form.remember %} checked {%
+                            endif %}>
+                        Remember me
+                    </label>
+                    <span style="text-align: center; margin-top: 10px; margin-bottom: -10px; font-size: 15px;">Don't
+                        have an account? <a href="{{ url_for('register') }}">Sign up</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<Script>
+    document.getElementById("userdetails").addEventListener("submit", function (event) {
+        const emailField = document.querySelector('input[name="email"]');
+        const emailErrMsg = document.querySelector('#emailerrormsg');
+        const pwdField = document.querySelector('input[name="password"]');
+        const pwdErrMsg = document.querySelector('#pwderrormsg');
+
+        let valid = true;
+
+        if (!emailField.value) {
+            event.preventDefault();
+            emailErrMsg.style.display = 'block';
+            valid = false;
+        } else {
+            emailErrMsg.style.display = 'none';
+        }
+
+        if (!pwdField.value) {
+            event.preventDefault();
+            pwdErrMsg.style.display = 'block';
+            valid = false;
+        } else {
+            pwdErrMsg.style.display = 'none';
+        }
+
+        return valid; // Allow submission only if all fields are valid
+    });
+    function goBack() {
+        window.history.back();
+    }
+</Script>
+
+</html>

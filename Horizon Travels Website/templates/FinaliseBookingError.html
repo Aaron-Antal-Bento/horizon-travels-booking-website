@@ -1,0 +1,59 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Booking Error Horizon Travels</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ConfirmBookingCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/journeysRWD.css')}}" />
+</head>
+
+<body style="margin: 0px;">
+    <!-- Navigation Bar -->
+    <div class="topnav" style="z-index: 4;">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content" style="margin-left: -152px;">
+                <a class="navLinks" href="{{ url_for('managebookings') }}">Manage Bookings</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a id="signIn" href="{{ url_for('signin') }}" aria-label="Sign in to your account">Sign In</a>
+        <a id="manageaccount" href="{{ url_for('account') }}" aria-label="Manage your account"
+            style="display: none;"><span id="usersname"></span></a>
+        <a class="navLinks" href="{{ url_for('managebookings') }}" aria-label="Manage your bookings" style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93.5%);
+  ">Manage Bookings</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 92%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 91.5%, 0% 88%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="backgroundImage"></div>
+    <div class="pageContents" style="margin-left: 20px;">
+        <div class="containerbg column" style="max-width: 600px; margin-top: 200px; background-color: #f2fbff;">
+            <h2>Error completing booking</h2>
+            <p style="width: 100%; margin: auto; font-size: medium; margin-bottom: 15px; color: red;">{{ Message }}
+            </p>
+            <div class="row" style="margin: auto;">
+                <a class="htbutton" href="{{ url_for('home') }}">Back to home</a>
+            </div>
+        </div>
+</body>
+
+</html>

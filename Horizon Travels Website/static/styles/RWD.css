@@ -1,0 +1,68 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+
+/* For mobile phones: */
+.pageContents {
+  display: inline;
+  justify-content: space-evenly;
+}
+
+.booking {
+  float: none;
+  margin: auto;
+  margin-top: 220px;
+}
+
+.travelmethods {
+  height: fit-content;
+  width: 100%;
+  margin: auto;
+  display: none;
+}
+
+.promotionh1{
+  max-width: 700px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* For tablets: */
+@media only screen and (min-width: 550px) {
+  /* For Tablets when selectors dont fit on one row: */
+  @media only screen and (max-width: 996px) {
+  }
+}
+
+/* For Desktop: */
+@media only screen and (min-width: 1123px) {
+  .pageContents {
+    display: flex;
+  }
+
+  .booking {
+    float: left;
+  }
+
+  .travelmethods {
+    max-width: 340px;
+    width: calc(100% - 810px);
+    margin-top: 100px;
+    display: inline;
+  }
+
+  #travelmethodscontainer {
+    display: none;
+  }
+
+  .bottombg {
+    height: 755px;
+  }
+
+  #pageBottom {
+    top: 1220px;
+  }
+
+  .promotionh1 {
+    max-width: 100%;
+  }
+}

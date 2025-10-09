@@ -1,0 +1,197 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.fill {
+    flex: 1;
+}
+
+.containerbg {
+    backdrop-filter: blur(80px) brightness(1.14);
+    border-radius: 15px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+}
+
+.minimise {
+    margin: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.nomargin {
+    margin: 0px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    border: 2px solid rgb(177, 177, 177);
+    padding: 15px;
+    margin: 10px;
+}
+
+.outline {
+    border: 2px solid rgb(177, 177, 177);
+    padding: 13px 10px 13px 10px;
+}
+
+.invisiblesection {
+    gap: 10px;
+    width: 100%;
+}
+
+.pageContents {
+    margin: 85px 20px 20px 100px;
+    font-family: Arial, sans-serif;
+}
+
+.horizontalSeparatorLine {
+    border-bottom: 2px solid rgb(177, 177, 177);
+    width: 98%;
+    margin: 5px auto 15px auto;
+}
+
+h1 {
+    font-size: 55px;
+    margin: 0px;
+}
+
+p {
+    margin: 2px;
+    font-size: 15px;
+}
+
+.Heading {
+    margin: 0px;
+    font-size: 35px;
+}
+
+#backbutton {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 3;
+    height: 42px;
+    width: 56px;
+    font-size: 25px;
+    border: none;
+    background-color: #eaeaea;
+    transition: color 0.3s ease;
+}
+
+#backbutton:hover {
+    background-color: #dcdcdc;
+    font-size: 28px;
+}
+
+form {
+    margin: auto;
+    padding: 5px 15px 15px 15px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+form input[type="radio"] {
+    width: fit-content;
+    margin: 0px;
+    padding: 0px;
+}
+
+form input[type="checkbox"]:hover {
+    cursor: pointer;}
+
+.iconright {
+    position: absolute;
+    right: 5px;
+}
+
+.htbutton {
+    background-color: #5298ef;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    text-align: center;
+    margin: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.htbutton:hover {
+    background-color: #4580c9;
+    cursor: pointer;
+}
+
+.smallbtn{
+    padding: 9px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.disabledbutton {
+    background-color: #ababab;
+    cursor: auto;
+}
+
+.redbutton {
+    background-color: rgb(250, 75, 75);
+    cursor: auto;
+}
+
+.disabledbutton:hover {
+    background-color: #ababab;
+    cursor: auto;
+}
+
+.redbutton:hover {
+    background-color: rgb(250, 75, 75);
+    cursor: auto;
+}
+
+.errormsg {
+    color: red;
+    margin: 0px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.backgroundImage {
+    position: fixed;
+    background-image: url('Images/MainBackground.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: cover;
+    height: 800px;
+    width: 100%;
+    top: 0px;
+    z-index: -1;
+}
+
+.mousePointer:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,114 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+  <title>About Horizon Travels</title>
+  <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css')}}">
+</head>
+
+<style>
+  h1 {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  p {
+    margin-top: 5px;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    margin-top: 28px;
+  }
+</style>
+
+<body class="aboutPage">
+  <!-- Navigation Bar -->
+  <div class="topnav">
+    <div class="dpmenu">
+      <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+"><i class="fa fa-bars"></i></button>
+      <div id="keepActive"></div>
+      <div class="content">
+        <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey">Plan a Journey</a>
+        <a class="navLinks" href="{{ url_for('managebookings') }}">Manage Bookings</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+      </div>
+    </div>
+    <a id="signIn" href="{{ url_for('signin') }}" aria-label="Sign in to your account">Sign In</a>
+    <a id="manageaccount" href="{{ url_for('account') }}" aria-label="Manage your account" style="display: none;"><span
+        id="usersname"></span></a>
+    <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey"
+      style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93%);">Plan a Journey</a>
+    <a class="navLinks" href="{{ url_for('managebookings') }}" aria-label="Manage your bookings" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 89%);
+">Manage Bookings</a>
+    <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 88.5%, 0% 85%);
+">Destinations</a>
+    <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+        src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+    <div id="navangledbg"></div>
+  </div>
+
+  <!-- About Page Content -->
+  <div class="pageContents">
+    <div class="aboutSection" style="padding-top: 70px; padding-left: 25px;">
+      <h1>About Horizon Travels</h1>
+      <p>
+        Horizon Travels is dedicated to providing the best travel experiences for our customers. Our mission is to make
+        travel easy, accessible, and enjoyable for everyone. We offer a wide range of destinations and services to
+        ensure that you have a memorable journey.
+      </p>
+      <h2>Our Story</h2>
+      <p>
+        Founded in 2006, Horizon Travels started with a simple goal: to inspire people to explore the world. Over the
+        years, we have grown into a trusted travel partner for thousands of adventurers. Our team of experienced travel
+        professionals is passionate about helping you discover new places and create lasting memories.
+      </p>
+      <h2>Our Services</h2>
+      <ul>
+        <li>Flight Bookings</li>
+        <li>Rail Bookings</li>
+        <li>Customized Travel Packages</li>
+        <li>24/7 Customer Support</li>
+      </ul>
+      <h2>Why Choose Us?</h2>
+      <p>
+        We prioritize your comfort and satisfaction. Here are a few reasons why our customers love us:
+      </p>
+      <ul>
+        <li>Wide selection of destinations</li>
+        <li>Competitive pricing</li>
+        <li>Experienced travel consultants</li>
+        <li>Excellent customer service</li>
+      </ul>
+      <h2>Contact Us</h2>
+      <p>
+        Have questions or need assistance? Our friendly team is here to help you. Contact us at
+        customer.support@horizontravels.com or call us at +44 78744 82105.
+      </p>
+      <h3>Resources</h3>
+      <ul>
+        <li>Images from: <a href="https://www.freeimages.com/">freeimages</a>, <a
+            href="https://unsplash.com/">unsplash</a></li>
+        <li>Icons from: <a href="https://fontawesome.com/">fontawesome</a></li>
+        <li>Tools from: <a href="https://getbootstrap.com/">bootstrap</a>, <a
+            href="https://www.chartjs.org/">chartjs</a>, <a href="https://www.canva.com/">canva</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

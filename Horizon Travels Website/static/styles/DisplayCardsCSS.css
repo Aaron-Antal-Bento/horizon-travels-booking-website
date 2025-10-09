@@ -1,0 +1,108 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+.travelmethods {
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    /* change to center between nav bar and destinations */
+}
+
+#skewbg {
+    background-color: #f4fafd;
+    border-radius: 5px;
+    /* border-radius: 10px; */
+    border: 1px solid #333;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+    position: absolute;
+    inset: 0px;
+    z-index: -1;
+
+    -webkit-transform: skewY(1deg);
+    -ms-transform: skewY(1deg);
+    transform: skewY(1deg);
+}
+
+#displaytext h3,
+.travelmethods h2,
+.destinationdisplay h2 {
+    color: black;
+    font-weight: bold;
+}
+
+.travelmethods h2,
+.destinationdisplay h2 {
+    margin-top: 15px;
+}
+
+.displaycard {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #333;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.displaycard:hover img {
+    transform: scale(1.05);
+}
+
+#displaytext {
+    text-align: right;
+}
+
+#displaytext h3 {
+    margin-top: -2px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.displaycard img {
+    width: 280px;
+    transition: transform 0.3s ease;
+    transform-origin: bottom center;
+}
+
+#displaytext p {
+    margin: 10px;
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+#angledbackground {
+    position: relative;
+    overflow: hidden;
+    width: inherit;
+    height: 30px;
+    margin-top: -30px;
+}
+
+#angledbackground:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    background: white;
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+}
+
+.carousel-indicators {
+    margin-bottom: -14px;
+    bottom: 20px;
+}
+
+.carousel-indicators li,
+.carousel-indicators .active {
+    filter: invert(100%);
+    transition: background-color 0.1s ease;
+}

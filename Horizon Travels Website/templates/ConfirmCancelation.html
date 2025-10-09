@@ -1,0 +1,94 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Cancel Booking Horizon Travels</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/UserSignedIn.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ManageBookingsCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+</head>
+
+<style>
+    @media only screen and (max-width: 630px) {
+        .bookticket{
+            position: static;
+            inset: auto;
+            margin: -5px;
+            margin-top: 5px;
+        }
+
+        #backbutton {
+            position: absolute;
+        }
+        #cancelHolder{
+            margin-left: 10px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content" style="margin-left: -153px;">
+                <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey">Plan a Journey</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a id="signIn" href="{{ url_for('signin') }}" aria-label="Sign in to your account">Sign In</a>
+        <a id="manageaccount" href="{{ url_for('account') }}" aria-label="Manage your account"
+            style="display: none;"><span id="usersname"></span></a>
+        <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey"
+            style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93%);">Plan a Journey</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 91%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 90.5%, 0% 88%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="pageContents" style="margin-top: 100px; display: flex; height: 580px; font-family: Arial, sans-serif;">
+        <button id="backbutton" onclick="goBack()" style="margin-left: 40px;"><i
+                class="fa-solid fa-arrow-left"></i></button>
+        <div style="margin: auto; margin-top: 100px;">
+            <div id="cancelHolder">
+                <h1 style="text-align: center;">Are you sure you want to cancel this booking?</h1>
+                <div class="journeyholder" style="padding: 10px; width: 100%; max-width: 571px;">
+                    <h3 id="cancelinfo">From: {{ journey.Origin }}</h3>
+                    <h3 id="cancelinfo">To: {{ journey.Destination }}</h3>
+                    <h3 id="cancelinfo" style="margin-top: 5px;">On the {{ journey.JourneyDate }} at {{
+                        journey.DepartureTime }}</h3>
+                    <p id="cancelinfo" style="margin-bottom: 5px;">Booked on {{ journey.BookingDate }}</p>
+                    <h3 id="cancelinfo">For {{ journey.SeatsBooked }} passenger{% if journey.SeatsBooked != 1
+                        %}s{%endif%} with {% if journey.SeatsBooked == 1 %}a{%endif%} {{
+                        journey.SeatType }} seat{% if journey.SeatsBooked != 1 %}s{%endif%}</p>
+                        <h3 id="cancelinfo" style="margin-top: 15px;">Booking Refrence: {{ journey.BookingRef }}</h3>
+                        <h3 id="cancelinfo" style="margin-top: 15px;">Total price paid £{{ journey.PricePaid }}</h3>
+                        <p id="cancelinfo">Price paid per seat £{{ journey.PricePaidPerSeat }}</p>
+
+                        <h1 id="cancelinfo" style="margin-top: 15px;">Total refund £{{ journey.TotalRefund }}</h1>
+                        <p id="cancelinfo">Cancelation change of {{ journey.BookingChargePercentage }}% of booking
+                            price.</p>
+                        <button class="bookticket delete" style="text-decoration: none;" onclick="location.href='{{ url_for('confirmcancelation', bookingID=bookingID) }}'">Confirm cancelation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/JourneyScripts.js')}}"></script>
+</body>
+
+</html>

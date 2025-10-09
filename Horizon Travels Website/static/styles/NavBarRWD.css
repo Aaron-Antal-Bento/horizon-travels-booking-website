@@ -1,0 +1,18 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+@media only screen and (min-width: 820px) {
+    .btn {
+        display: none;
+    }
+
+    #signIn, #manageaccount {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+    }
+
+    .navLinks {
+        display: inline;
+    }
+
+    .dpmenu {
+        display: none;
+    }
+}

@@ -1,0 +1,250 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-light.png')}}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='styles/images/Logo/fav-icon-dark.png')}}" media="(prefers-color-scheme: dark)">
+    <title>Horizon Travels Account</title>
+    <script src="https://kit.fontawesome.com/c66da8db21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/HTNavBarCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ManageAccountCSS.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/NavBarRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ManageAccountRWD.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.min.css')}}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <div class="dpmenu">
+            <button class="btn" style=" clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 98%);
+  "><i class="fa fa-bars"></i></button>
+            <div id="keepActive"></div>
+            <div class="content">
+                <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey">Plan a Journey</a>
+                <a class="navLinks" href="{{ url_for('managebookings') }}">Manage Bookings</a>
+                <a class="navLinks" href="{{ url_for('about') }}">About</a>
+                <a class="navLinks" href="{{ url_for('destinations') }}">Destinations</a>
+            </div>
+        </div>
+        <a class="navLinks" href="{{ url_for('home') }}" aria-label="Plan a Journey"
+            style=" clip-path: polygon(0 0, 100% 0, 100% 97.5%, 0% 93%);">Plan a Journey</a>
+        <a class="navLinks" href="{{ url_for('managebookings') }}" aria-label="Manage your bookings" style=" clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 89%);
+">Manage Bookings</a>
+        <a class="navLinks" href="{{ url_for('about') }}" aria-label="About Horizon Travels" style=" clip-path: polygon(0 0, 100% 0, 100% 89%, 0% 87.5%);
+">About</a>
+        <a class="navLinks" href="{{ url_for('destinations') }}" aria-label="Destinations we go to" style=" clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 84%);
+  ">Destinations</a>
+        <a class="left" id="home" href="{{ url_for('home') }}" aria-label="Home"><img
+                src="{{ url_for('static', filename='styles/images/Logo/HTLogoSimple.png')}}" alt="Home"></a>
+        <div id="navangledbg"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="pageContents" style="margin-top: 100px; display: flex; height: 580px;">
+        <div id="userscards">
+            <h2 style="margin: 10px 0px 0px 20px; background-color: white;">Payment cards</h2>
+            {% if cards %}
+            <div id="cardScroll">
+                <div id="cardsHolder">
+                    {% for card in cards %}
+                    <div class="cardholder">
+                        <div class="cardbg"></div>
+                        <h3 style="position: absolute; inset: -14px auto auto 9px; color: red;">{% if card[4]
+                            %}Expired.{% endif %}</h3>
+                        <h2 style="position: absolute; inset: 70px auto auto 10px;">{{ card[1] }}</h2>
+                        <p style="position: absolute; inset: 107px auto auto 114px; color: black; font-size: 12px;">Card
+                            No.
+                        </p>
+                        <h2 style="position: absolute; inset: 122px auto auto 123px; color: white; font-size: 18px;">
+                            •••• {{
+                            card[2] }}</h2>
+                        <p style="position: absolute; inset: 107px auto auto 32px; color: black; font-size: 12px;">Exp
+                            Date.
+                        </p>
+                        <h2 style="position: absolute; inset: 122px auto auto 37px; color: white; font-size: 18px;">{{
+                            card[3] }}</h2>
+                        <button class="deletebutton" style="position: absolute; inset: auto 15px 25px auto; color: red;"
+                            onclick="location.href='{{ url_for('deletecard', cardID=card[0]) }}'"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            {% else %}
+            <p style="text-align: center; font-size: 16px; color: #6f6f6f; font-weight: bold; margin-top: 30px;">No
+                cards to display...</p>
+            {% endif %}
+        </div>
+
+        <div class="verticalSeparatorLine a"></div>
+        <div class="horizontalSeparatorLine" id="fourth"></div>
+
+        <div id="manageAccountPage">
+            <div id="accountName">
+                <h1>{{ username }} {{ lastname }}</h1>
+                {% if regDate %}
+                <h3>Account created on {{ regDate }}</h3>
+                {% endif %}
+            </div>
+
+            <div style="margin: auto; display: flex; flex-direction: column;">
+                <div style="margin: auto;">
+                    <h2 style="margin: 0px;">Email: {{ email }}</h2>
+                    <div><button id="change" onclick="ChangeEmail()">Change email</button></div>
+                </div>
+                <div style="margin: auto;">
+                    <h2 style="margin-top: 25px; margin-bottom: 0px;">Password: •••••••••••••••</h2>
+                    <div><button id="change" onclick="ChangePassword()">Change password</button></div>
+                </div>
+            </div>
+
+            <div id="deleteaccountbuttonholder" style="width: 100%; display: flex;">
+                <button class="accountButton toggle-button" id='logoutbutton'
+                    style="width: 300px; margin: 4px auto 8px auto;" onclick="ConfirmDelete()">Delete
+                    account</button>
+            </div>
+
+            <div id="accountPage2" {% if emailerrormsg or passerrormsg %} style="display: flex;" {% endif %}>
+                <button id="backbutton" class="page2backbutton" onclick="HidePage2()"
+                    style="align-self: flex-start; margin-bottom: auto; margin-top: 30px;"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+
+                <div class="confirmDelete">
+                    <p>Are you sure you want to delete your account?</p><a id='logoutbutton'
+                        href="{{url_for('deleteaccount')}}" style="width: 100%;">Confirm</a>
+                </div>
+
+                <div id="emailChangeForm" {% if emailerrormsg %} style="display: flex;" {% endif %}>
+                    <p id="accounterror" style="top:-55px;"> {{emailerrormsg}} </p>
+                    <form id="changeEmail" action="{{ url_for('changeemail') }}" method="post">
+                        <label for="email"><b>New email</b></label>
+                        <div style="position: relative;">
+                            <input type="text" placeholder="Email address" name="email" value="{{request.form.email}}">
+                            <span id="emailerrormsg" style="width: fit-content; margin: -10px 0px -15px 5px">
+                                <p style="width: fit-content;">Please enter your new email</p>
+                            </span>
+                        </div>
+                        <br>
+                        <button type="submit">Change email</button>
+                    </form>
+                </div>
+
+                <div id="passwordChangeForm" {% if passerrormsg %} style="display: flex;" {% endif %}>
+                    <p id="accounterror" style="top: -55px;"> {{passerrormsg}} </p>
+
+                    <form id="changePass" action="{{ url_for('changepassword') }}" method="post">
+                        <label for="oldpassword"><b>Old password</b></label>
+                        <div style="position: relative;">
+                            <input id="oldpassword" type="password" placeholder="Old password" name="oldpassword"
+                                value="{{request.form.oldpassword}}" style="margin-bottom: 5px;">
+                        </div>
+                        <br>
+
+                        <label for="password"><b>New password</b></label>
+                        <span id="vaildpwderrormsg" style="color: red; display: none;"> Your password
+                            must contain 8 characters</span>
+                        <div style="position: relative;">
+                            <input id="password" type="password" placeholder="Password" name="password"
+                                value="{{request.form.password}}" style="margin-bottom: 5px;">
+                            <span id="pwderrormsg" style="width: fit-content;">
+                                <p style="margin: 0px; width: fit-content;">Please enter a new password</p>
+                            </span>
+                        </div>
+                        <label for="confirmpwd"><b>Confirm new password</b></label>
+                        <div style="position: relative;">
+                            <input id="confirmpwd" type="password" placeholder="Re-enter password">
+                            <span id="pwdmatcherrormsg" style="width: fit-content; margin-top: 5px;">
+                                <p style="margin: 0px; width: fit-content;">Passwords do not match</p>
+                            </span>
+                        </div>
+                        <br>
+                        <button type="submit">Change password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="verticalSeparatorLine b"></div>
+        <div class="horizontalSeparatorLine"></div>
+
+        <div class="sideBar">
+            <button id="backbutton" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></button>
+            <div class="item top">
+                <a id="planJourney" href="{{ url_for('home') }}">Plan a journey</a>
+                <a href="{{ url_for('managebookings') }}">Manage bookings</a>
+                {% if usertype == 'Admin' %}
+                <a href="{{ url_for('adminpanel') }}">Admin controls</a>
+                {% endif %}
+            </div>
+            <div class="item bottom">
+                <a id="switchbutton" href="{{ url_for('signin') }}">Switch account</a>
+                <a id="logoutbutton" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/JourneyScripts.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/AccountScripts.js')}}"></script>
+
+    <script>
+        document.getElementById("changePass").addEventListener("submit", function (event) {
+            const pwdField = document.querySelector('#password');
+            const pwdErrMsg = document.querySelector('#pwderrormsg');
+            const validpwdErrMsg = document.querySelector('#vaildpwderrormsg');
+            const pwdconfirmField = document.querySelector('#confirmpwd');
+            const pwdconfirmErrMsg = document.querySelector('#pwdmatcherrormsg');
+
+            let valid = true;
+
+            if (!pwdField.value) {
+                event.preventDefault();
+                pwdErrMsg.style.display = 'block';
+                valid = false;
+            } else {
+                if (pwdField.value.length < 8) {
+                    event.preventDefault();
+                    validpwdErrMsg.style.display = 'block';
+                    pwdconfirmField.value = '';
+                    valid = false;
+                }
+                else {
+                    validpwdErrMsg.style.display = 'none';
+                }
+                pwdErrMsg.style.display = 'none';
+            }
+
+            if (pwdField.value != pwdconfirmField.value) {
+                event.preventDefault();
+                pwdconfirmErrMsg.style.display = 'block';
+                pwdconfirmField.value = '';
+                valid = false;
+            } else {
+                pwdconfirmErrMsg.style.display = 'none';
+            }
+            return valid; // Allow submission only if all fields are valid
+        });
+
+        document.getElementById("changeEmail").addEventListener("submit", function (event) {
+            const emailField = document.querySelector('input[name="email"]');
+            const emailErrMsg = document.querySelector('#emailerrormsg');
+
+            let valid = true;
+
+            if (!emailField.value) {
+                event.preventDefault();
+                emailErrMsg.style.display = 'block';
+                valid = false;
+            } else {
+                emailErrMsg.style.display = 'none';
+            }
+            return valid; // Allow submission only if all fields are valid
+        });
+    </script>
+</body>
+
+</html>

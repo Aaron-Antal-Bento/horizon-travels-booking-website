@@ -1,0 +1,270 @@
+/* Author: Aaron Antal-Bento ID: 23013693 */
+.verticalSeparatorLine {
+    border-left: 1px solid rgb(177, 177, 177);
+    height: 100%;
+    margin: 5px 20px 5px 20px;
+}
+
+.horizontalSeparatorLine {
+    display: none;
+    border-bottom: 2px solid rgb(177, 177, 177);
+    width: 90%;
+    margin: 20px auto 20px auto;
+}
+
+#manageAccountPage {
+    position: relative;
+    width: fit-content;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#userscards {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.sideBar {
+    width: 295px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.top {
+    margin-top: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+}
+
+.bottom {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+}
+
+.pageContents a,
+.accountButton {
+    background-color: #5298ef;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 18px;
+    margin: 4px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+
+#switchbutton {
+    background-color: rgb(222, 222, 222);
+    border-width: 2px;
+    color: black;
+}
+
+#switchbutton:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+#change {
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    background-color: rgb(222, 222, 222);
+    border-width: 2px;
+    color: black;
+    padding: 8px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+#change:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: rgb(200, 200, 200);
+}
+
+#logoutbutton {
+    background-color: rgb(240, 0, 0);
+}
+
+#logoutbutton:hover {
+    background-color: rgb(220, 22, 22);
+}
+
+.pageContents a:hover,
+.accountButton:hover {
+    background-color: #4580c9;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+#backbutton {
+    margin-top: 15px;
+    height: 60px;
+    width: 80px;
+    font-size: 35px;
+    border: none;
+    background-color: #eaeaea;
+    transition: color 0.3s ease;
+}
+
+#backbutton:hover {
+    background-color: #dcdcdc;
+    font-size: 40px;
+}
+
+#manageAccountPage h1 {
+    font-size: 50px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#manageAccountPage h3 {
+    font-weight: normal;
+    margin-top: 0px;
+}
+
+.confirmDelete {
+    position: absolute;
+    text-align: left;
+    padding-left: 5px;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    display: none;
+}
+
+#accountPage2 {
+    display: none;
+    inset: -10px;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#emailChangeForm,
+#passwordChangeForm {
+    position: absolute;
+    text-align: left;
+    padding-left: 5px;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    display: none;
+}
+
+form input {
+    background-color: #f2fbff;
+    padding: 13px;
+    font-size: 16px;
+    border: 3px solid #5298ef;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #4580c9;
+    outline: none;
+}
+
+form button {
+    background-color: #5298ef;
+    color: white;
+    padding: 13px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #4580c9;
+    cursor: pointer;
+}
+
+#emailerrormsg,
+#pwderrormsg,
+#fnameerrormsg,
+#pwdmatcherrormsg {
+    margin: 0px;
+    margin-left: 5px;
+    color: red;
+    top: 100%;
+    display: none;
+}
+
+#accounterror {
+    position: absolute;
+    color: red;
+}
+
+.cardholder {
+    position: relative;
+    width: 300px;
+    height: 189px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
+    margin: 10px auto 25px auto;
+}
+
+.cardbg {
+    position: absolute;
+    inset: -25px -30px -25px -30px;
+    background-image: url('Icons/credit-card-regular.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.deletebutton {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(246, 246, 246);
+    padding-top: 4px;
+}
+
+.deletebutton:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.deletebutton:hover i {
+    transform: translateY(-1px);
+}
+
+#cardsHolder {
+    width: 100%;
+}
+
+#cardScroll {
+    overflow-y: auto;
+    width: 100%;
+}

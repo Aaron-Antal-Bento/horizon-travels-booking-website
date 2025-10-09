@@ -1,0 +1,77 @@
+<!-- Author: Aaron Antal-Bento ID: 23013693 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .receipt {
+            border: 2px solid #000;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 0px;
+            width: 350px;
+        }
+
+        .receipt h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .receipt p {
+            margin: 5px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: gray;
+        }
+
+        .seperator {
+            width: 90%;
+            height: 0;
+            margin: 18px auto 14px auto;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="receipt">
+        <div style="background-color: #5298ef; padding: 14px;">
+            <p style="color: white; text-align: center; font-size: medium;">{{ booking.travel_method }} <strong style="font-size: 25px;">{{ booking.o_city }} - {{
+                    booking.d_city }}</strong> {{ booking.departure_time }}</p>
+        </div>
+        <div style="padding: 0 14px 0 14px;">
+            <p style="margin-top: 10px;"><strong>Name:</strong> {{ booking.customer_name }}</p>
+            <p><strong>Passengers:</strong> {{ booking.seats }}</p>
+            <p style="margin-bottom: 0;"><strong>Seat type:</strong> {{ booking.seat_type }}</p>
+            <p style="margin-top: 0; margin-left: 5px; font-size: small;">Booked on {{ booking.booking_date }}</p>
+
+            <div class="seperator" style="width: 95%;"></div>
+            <p><strong>From:</strong> {{ booking.origin }}</p>
+            <p style="margin-bottom: 10px;"><strong>To:</strong> {{ booking.destination }}</p>
+            <p style="margin-bottom: 10px;"><strong>Journey Date:</strong> {{ booking.journey_date }}</p>
+            <p><strong>Departure Time:</strong> {{ booking.departure_time }}</p>
+            <p><strong>Arrival Time:</strong> {{ booking.arrival_time }}</p>
+            <p style="margin-bottom: 10px;"><strong>Duration:</strong> {{ booking.journey_duration }}</p>
+            <p style="font-size: small;">Traveling with {{ booking.company }}.</p>
+        </div>
+        <div class="seperator"></div>
+        <p style="margin-bottom: 0; margin-left: 14px;"><strong>Price Paid:</strong> £{{ booking.price_paid }}</p>
+        <p style="margin-top: 0; margin-bottom: 20px; margin-left: 14px; font-size: small;">£{{
+            booking.price_paid_per_ticket }} per ticket.</p>
+        <p style="font-weight: bold; font-size: 25px; text-align: center;">{{ booking.booking_ref }}</p>
+        <div class="footer">
+            <p>Thank you for choosing Horizon travels!</p>
+        </div>
+    </div>
+</body>
+
+</html>
