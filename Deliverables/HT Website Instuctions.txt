@@ -1,0 +1,18 @@
+To run the website install required imports below and run FlaskBackend.py.
+To create and account go: Home page->Sign In->Sign up then enter details.
+To log out or switch account go: Account(top right)->Switch account/Logout.
+To access admin panel go: Account(must be admin)->Admin controls.
+
+Test account details: email: test@gmail.com (changed to test2@gmail.com in demo) password: 12345678
+Admin account details: email: admin@horizon.com password: Admin1
+
+
+Required imports for backend:
+
+flask: pip install flask
+MySQL connector: pip install mysql-connector-python
+passlib: pip install passlib
+weasyprint: pip install weasyprint
+numpy: pip install numpy
+
+Single command: pip install flask mysql-connector-python passlib weasyprint numpy
