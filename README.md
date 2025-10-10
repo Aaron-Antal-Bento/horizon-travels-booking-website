@@ -21,31 +21,42 @@ The project allows customers to book travel, view destinations, and manage booki
 
 <h2>🎥 Demo</h2>
 
-<p align="center">Homepage and Booking Interface</p>
 <div align="center" style="text-align:center; margin: 1em 0;">
-  <!-- GIF Example -->
-  <img src="./demo/HomepageDemo.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <h4 align="center">Homepage</h4>
+  <img src="./demo/HomePage.gif" alt="Homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  
+  <h4 align="center">Journey Select</h4>
+  <img src="./demo/SelectJourney.gif" alt="Journey select demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
 
-  <p align="center">Admin Dashboard and Reports</p>
-  <!-- MP4 Example -->
-  <video controls autoplay muted loop style="max-width:80%; height:auto; border-radius:8px;">
-    <source src="./demo/AdminDashboard.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <h4 align="center">Sign Up Page</h4>
+  <img src="./demo/SignUp.gif" alt="Sign up demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+
+  <h4 align="center">Manage Bookings | Destinations and About Pages</h4>
+  <p align="center">
+    <img src="./demo/ManageBooking.gif" alt="Manage booking demo (GIF)" width="49%" />
+    <img src="./demo/Destinations-About.gif" alt="Destinations and about page demo (GIF)" width="49%" />
+  </p>
 </div>
 
-<h4 align="center">Website Pages | UI Overview</h4>
+<h4 align="center">Admin Controls</h4>
+<p align="center">
+    <img src="./demo/AdminReports.gif" alt="Admin page demo (GIF)" width="32%" />
+    <img src="./demo/AdminPanel1.gif" alt="Admin page demo (GIF)" width="32%" />
+    <img src="./demo/AdminPanel2.gif" alt="Admin page demo (GIF)" width="32%" />
+</p>
+
+<h4 align="center">Responsive Web Design</h4>
+<p align="center">
+    <img src="./demo/RWDSelectJourney.gif" alt="RWD demo (GIF)" width="32%" />
+    <img src="./demo/RWDHomepage.gif" alt="RWD demo (GIF)" width="32%" />
+    <img src="./demo/RWDConfirmJourney-Destinations.gif" alt="RWD demo (GIF)" width="32%" />
+</p>
+
+<h4 align="center">Screenshots</h4>
 <p align="center">
   <img src="./demo/LoginPage.png" alt="Login Page Screenshot" width="49%" />
   <img src="./demo/BookingPage.png" alt="Booking Page Screenshot" width="49%" />
 </p>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 1em 0;">
-  <img src="./demo/DestinationsPage.png" alt="Destinations Page" style="width: 24%; height: auto; border-radius: 8px;" />
-  <img src="./demo/UserBookings.png" alt="User Bookings Page" style="width: 24%; height: auto; border-radius: 8px;" />
-  <img src="./demo/ReportsPage.png" alt="Reports Page" style="width: 24%; height: auto; border-radius: 8px;" />
-  <img src="./demo/ResponsiveLayout.png" alt="Responsive Layout Example" style="width: 24%; height: auto; border-radius: 8px;" />
-</div>
 
 <h2>⚙️ How It Works</h2>
 
