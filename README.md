@@ -12,7 +12,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <li><strong>End User Booking System</strong> - Users can search destinations, select travel dates, choose transport type (Air or Train), and complete bookings with instant receipt generation.</li>
   <li><strong>User Accounts</strong> - Register, log in/out, update password, view or cancel bookings, and view booking history.</li>
   <li><strong>Dynamic Pricing</strong> - Fares calculated based on travel mode, distance, and advance booking discounts.</li>
-  <li><strong>Seat Classes</strong> - Economy, Business, and First-Class options, each with corresponding price multipliers.</li>
+  <li><strong>Seat Classes</strong> - Standard and First-Class options, each with corresponding price multipliers.</li>
   <li><strong>Admin Dashboard</strong> - Manage users, journeys, fares, and generate reports such as monthly sales, top customers, and profitable routes.</li>
   <li><strong>Cancellation Policy Handling</strong> - Tracks booking cancellations and applies relevant refund or charge percentages.</li>
   <li><strong>Responsive Design</strong> - Optimized layout for desktop, tablet, and mobile devices.</li>
