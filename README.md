@@ -24,14 +24,19 @@ The project allows customers to book travel, view destinations, and manage booki
 <p align="center">Homepage and Booking Interface</p>
 <div align="center" style="text-align:center; margin: 1em 0;">
   <!-- GIF Example -->
-  <img src="./demo/HomepageDemo.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/HomePage.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/SignUp.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/RWDSelectJourney.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/RWDHomepage.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/RWDConfirmJourney-Destinations.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/ManageBooking.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/Destinations-About.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/AdminReports.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/AdminPanel1.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/AdminPanel2.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
+  <img src="./demo/SelectJourney.gif" alt="Horizon Travels homepage demo (GIF)" style="max-width:80%; height:auto; border-radius:8px;" />
 
   <p align="center">Admin Dashboard and Reports</p>
-  <!-- MP4 Example -->
-  <video controls autoplay muted loop style="max-width:80%; height:auto; border-radius:8px;">
-    <source src="./demo/AdminDashboard.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
 </div>
 
 <h4 align="center">Website Pages | UI Overview</h4>
