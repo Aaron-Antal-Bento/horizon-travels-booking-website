@@ -40,22 +40,22 @@ The project allows customers to book travel, view destinations, and manage booki
 
 <h4 align="center">Admin Controls</h4>
 <p align="center">
-    <img src="./demo/AdminReports.gif" alt="Admin page demo (GIF)" width="32%" />
     <img src="./demo/AdminPanel1.gif" alt="Admin page demo (GIF)" width="32%" />
     <img src="./demo/AdminPanel2.gif" alt="Admin page demo (GIF)" width="32%" />
+    <img src="./demo/AdminReports.gif" alt="Admin page demo (GIF)" width="32%" />
 </p>
 
 <h4 align="center">Responsive Web Design</h4>
 <p align="center">
-    <img src="./demo/RWDSelectJourney.gif" alt="RWD demo (GIF)" width="32%" />
     <img src="./demo/RWDHomepage.gif" alt="RWD demo (GIF)" width="32%" />
+    <img src="./demo/RWDSelectJourney.gif" alt="RWD demo (GIF)" width="32%" />
     <img src="./demo/RWDConfirmJourney-Destinations.gif" alt="RWD demo (GIF)" width="32%" />
 </p>
 
 <h4 align="center">Screenshots</h4>
 <p align="center">
-  <img src="./demo/LoginPage.png" alt="Login Page Screenshot" width="49%" />
-  <img src="./demo/BookingPage.png" alt="Booking Page Screenshot" width="49%" />
+  <img src="./demo/Account.png" alt="Login Page Screenshot" width="49%" />
+  <img src="./demo/ConfirmBooking.png" alt="Booking Page Screenshot" width="49%" />
 </p>
 
 <h2>⚙️ How It Works</h2>
