@@ -19,7 +19,8 @@ The project allows customers to book travel, view destinations, and manage booki
   <li><strong>Security Features</strong> - Authentication, input validation, and protected admin routes.</li>
 </ul>
 
-<h2>🎥 Demo</h2>
+## 🎥 Demo  
+*_(Allow time for GIFs to load)_*
 
 <div align="center" style="text-align:center; margin: 1em 0;">
   <h4 align="center">Homepage</h4>
