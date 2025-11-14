@@ -1,4 +1,4 @@
-<h1>🌍 Horizon Travels Booking Website</h1>
+<h1>Horizon Travels Booking Website</h1>
 
 <p>
 A responsive full-stack web application developed as part of my web development coursework at UWE. 
@@ -6,7 +6,7 @@ The system is designed for Horizon Travels (HT) a UK-based travel company offeri
 The project allows customers to book travel, view destinations, and manage bookings, while providing admin tools for reporting and system management.
 </p>
 
-<h2>🎯 Features</h2>
+<h2>Features</h2>
 
 <ul>
   <li><strong>End User Booking System</strong> - Users can search destinations, select travel dates, choose transport type (Air or Train), and complete bookings with instant receipt generation.</li>
@@ -19,7 +19,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <li><strong>Security Features</strong> - Authentication, input validation, and protected admin routes.</li>
 </ul>
 
-## 🎥 Demo  
+## Demo  
 *_(Allow time for GIFs to load)_*
 
 <div align="center" style="text-align:center; margin: 1em 0;">
@@ -59,7 +59,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <img src="./demo/ConfirmBooking.png" alt="Booking Page Screenshot" width="49%" />
 </p>
 
-<h2>⚙️ How It Works</h2>
+<h2>How It Works</h2>
 
 <p><strong>From the User’s Perspective:</strong></p>
 <ul>
@@ -78,7 +78,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <li>Monitor booking statuses and manage customer accounts.</li>
 </ul>
 
-<h2>🧠 Technologies Used</h2>
+<h2>Technologies Used</h2>
 
 <ul>
   <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
@@ -87,7 +87,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <li><strong>Frameworks:</strong> Bootstrap</li>
 </ul>
 
-<h2>🧩 Database Design</h2>
+<h2>Database Design</h2>
 
 <p>The database was designed following normalization principles:</p>
 <ul>
@@ -96,7 +96,9 @@ The project allows customers to book travel, view destinations, and manage booki
   <li>Links between tables to make sure each booking is correctly connected to the right user and journey</li>
 </ul>
 
-<h2>🖥️ Usage</h2>
+<img src="./demo/databaseER.png" alt="database ER diagram"/>
+
+<h2>Usage</h2>
 
 <p>Download the latest release:
 <a href="https://github.com/Aaron-Antal-Bento/horizon-travels-booking-website/releases">HorizonTravelsWebsite.zip</a> 
@@ -113,7 +115,7 @@ The project allows customers to book travel, view destinations, and manage booki
   <li>The website should run on your local host.</li>
 </ul>
 
-<h2>🧾 Evaluation</h2>
+<h2>Evaluation</h2>
 
 <p>
 This project successfully implements a fully functional booking system meeting Horizon Travels’ requirements. 
